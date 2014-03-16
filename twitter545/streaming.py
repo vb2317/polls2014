@@ -5,8 +5,8 @@ import time, tweepy, sys
 username = '' ## put a valid Twitter username here
 password = '' ## put a valid Twitter password here
 #auth     = tweepy.BasicAuthHandler(username, password)
-auth     = tweepy.OAuthHandler('Otmr3TjtVKlw4X3amh3A','vD7YueYHIxCLbDqNVgqp25nfKk0iUVfWYQcODKAw')
-auth.set_access_token('79137270-7uG6Prq58a0UnYVSQgCkwy9Flcxx5myDp1eFbKxnT','Tca04qVZAiYAm6aYJY1W0LfLLlFCt5zNW7WOMNd3PbVKT')
+auth     = tweepy.OAuthHandler('consumer_key','consumer_secret')
+auth.set_access_token('auth_key','auth_secret')
 api      = tweepy.API(auth)
 
 def main():
