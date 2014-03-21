@@ -1,12 +1,17 @@
 from slistener import SListener
 import time, tweepy, sys
+import json
 
 ## authentication
-username = '' ## put a valid Twitter username here
-password = '' ## put a valid Twitter password here
-#auth     = tweepy.BasicAuthHandler(username, password)
-auth     = tweepy.OAuthHandler('consumer_key','consumer_secret')
-auth.set_access_token('auth_key','auth_secret')
+with open('tweet-auth.json') as f:
+    auth_dict = json.load(f)
+
+auth_dict_ascii = dict()
+for k,v in auth_dict.iteritems():
+    auth_dict_ascii[k.encode('utf-8')] = v.encode('utf-8')
+    
+auth     = tweepy.OAuthHandler(auth_dict['consumer_key'],auth_dict['consumer_secret'])
+auth.set_access_token(auth_dict['auth_key'],auth_dict['auth_secret'])
 api      = tweepy.API(auth)
 
 def main():
